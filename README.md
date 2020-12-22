@@ -14,7 +14,7 @@ To use user scripts you need to first install a user script manager. Here are ma
 - [Tampermonkey](https://tampermonkey.net/) - Chrome, Microsoft Edge, Safari, Opera, Firefox (also with support for mobile Dolphin Browser and UC Browser)
 - [Violentmonkey](https://violentmonkey.github.io/) - Chrome, Firefox, Maxthon, Opera
 
-To install this user script, simply navigate to [this link](https://github.com/Bonfire/bptf-bot-utilities/blob/master/bptf-bot-utilities.user.js) and click "Install".
+To install this user script, simply navigate to [this link](https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js) and click "Install".
 
 You can also install this script by manually pasting the code found in the above link into a new user script.
 
