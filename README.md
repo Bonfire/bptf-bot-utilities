@@ -20,11 +20,16 @@ You can also install this script by manually pasting the code found in the above
 
 
 ## Example
-![Item Hover Buttons](https://i.imgur.com/PkrObvn.png)
+![Item Hover Buttons](https://i.imgur.com/NplmMpQ.png)
 
 _Newly added buttons for easily copying commands are highlighted above_
 
 ## Changelog
+**1.0.1**
+
+Improved:
+* Moved pricelist buttons to above the search link buttons
+
 **1.0.0**
 
 Added:

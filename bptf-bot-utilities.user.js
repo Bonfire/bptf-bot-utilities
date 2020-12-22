@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Backpack.tf - Bot Utilities
 // @namespace    https://github.com/Bonfire
-// @version      1.0
+// @version      1.0.1
 // @description  A script to provide various TF2Autobot utilities on backpack.tf
 // @author       Bon
 // @downloadURL  https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js
@@ -27,7 +27,7 @@
                     let botUtilityElements = document.createElement('dd');
                     botUtilityElements.className = 'popover-btns';
                     botUtilityElements.id = 'bot-utility-elements';
-                    $(".popover-content")[0].appendChild(botUtilityElements);
+                    $("#popover-search-links")[0].before(botUtilityElements);
                 }
 
                 let addUtilitiesLoad = setInterval(function () {
