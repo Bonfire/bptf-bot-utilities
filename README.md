@@ -26,7 +26,7 @@ You can also install this script by manually pasting the code found in the above
 _Newly added buttons for easily copying commands are highlighted above_
 
 ## Changelog
-**1.0.1**
+**1.0.2**
 
 Added:
 * "Pricecheck item" button on item hover - [@luigia](https://github.com/luigia)
