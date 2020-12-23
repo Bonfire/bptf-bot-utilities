@@ -6,6 +6,7 @@ This user script provides various TF2Autobot (and TF2-Automatic) utilities on [b
 * "Add to pricelist" button on item hover
 * "Update pricelist" button on item hover
 * "Remove from pricelist" button on item hover
+* "Pricecheck item" button on item hover
 
 ## Installation
 To use user scripts you need to first install a user script manager. Here are managers for various browsers:
@@ -20,11 +21,16 @@ You can also install this script by manually pasting the code found in the above
 
 
 ## Example
-![Item Hover Buttons](https://i.imgur.com/NplmMpQ.png)
+![Item Hover Buttons](https://i.imgur.com/UxWm6Si.png)
 
 _Newly added buttons for easily copying commands are highlighted above_
 
 ## Changelog
+**1.0.2**
+
+Added:
+* "Pricecheck item" button on item hover - [@luigia](https://github.com/luigia)
+
 **1.0.1**
 
 Improved:
