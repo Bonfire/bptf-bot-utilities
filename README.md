@@ -21,7 +21,7 @@ You can also install this script by manually pasting the code found in the above
 
 
 ## Example
-![Item Hover Buttons](https://i.imgur.com/UxWm6Si.png)
+![Item Hover Buttons](https://i.imgur.com/nKU8ERM.png)
 
 _Newly added buttons for easily copying commands are highlighted above_
 
