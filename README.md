@@ -3,10 +3,10 @@
 This user script provides various TF2Autobot (and TF2-Automatic) utilities on [backpack.tf](https://backpack.tf/)
 
 ## Features
+* "Item SKU" button on item hover
 * "Add to pricelist" button on item hover
 * "Update pricelist" button on item hover
 * "Remove from pricelist" button on item hover
-* "Pricecheck item" button on item hover
 
 ## Installation
 To use user scripts you need to first install a user script manager. Here are managers for various browsers:
@@ -21,7 +21,7 @@ You can also install this script by manually pasting the code found in the above
 
 
 ## Example
-![Item Hover Buttons](https://i.imgur.com/nKU8ERM.png)
+![Item Hover Buttons](https://i.imgur.com/rkrUF8L.png)
 
 _Newly added buttons for easily copying commands are highlighted above_
 
