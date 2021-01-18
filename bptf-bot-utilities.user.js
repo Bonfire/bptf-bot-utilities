@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Backpack.tf - Bot Utilities
 // @namespace    https://github.com/Bonfire
-// @version      1.0.3
+// @version      1.0.4
 // @description  A script to provide various TF2Autobot utilities on backpack.tf
 // @author       Bon
 // @downloadURL  https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js
@@ -13,162 +13,185 @@
 // ==/UserScript==
 
 (function () {
-    "use strict";
+  "use strict";
 
-    // Modify popover
-    $(document).on("mouseover", ".item", function () {
-        let hoveredItem = this;
-        let itemElement = $(hoveredItem)[0];
+  // Modify popover
+  $(document).on("mouseover", ".item", function () {
+    let hoveredItem = this;
+    let itemElement = $(hoveredItem)[0];
 
-        let popoverLoad = setInterval(function () {
-            // Add the "bot utility elements row"
-            if ($(hoveredItem).next().hasClass("popover")) {
-                if (!$("#bot-utility-elements").length) {
-                    let botUtilityElements = document.createElement('dd');
-                    botUtilityElements.className = 'popover-btns';
-                    botUtilityElements.id = 'bot-utility-elements';
-                    $("#popover-search-links")[0].before(botUtilityElements);
-                }
+    let popoverLoad = setInterval(function () {
+      // Add the "bot utility elements row"
+      if ($(hoveredItem).next().hasClass("popover")) {
+        if (!$("#bot-utility-elements").length) {
+          let botUtilityElements = document.createElement("dd");
+          botUtilityElements.className = "popover-btns";
+          botUtilityElements.id = "bot-utility-elements";
+          $("#popover-search-links")[0].before(botUtilityElements);
+        }
 
-                let addUtilitiesLoad = setInterval(function () {
-                    let itemSKU = itemLookup(itemElement);
+        let addUtilitiesLoad = setInterval(function () {
+          let itemSKU = itemLookup(itemElement);
 
-                    // Add the "<sku>" button
-                    if (!$("#sku-item-button").length) {
-                        let skuItemButton = document.createElement('a');
-                        skuItemButton.id = 'sku-item-button';
-                        skuItemButton.className = 'btn btn-default btn-xs';
-                        skuItemButton.textContent = ` ${itemSKU}`;
+          // Add the "<sku>" button
+          if (!$("#sku-item-button").length) {
+            let skuItemButton = document.createElement("a");
+            skuItemButton.id = "sku-item-button";
+            skuItemButton.className = "btn btn-default btn-xs";
 
-                        let skuIcon = document.createElement('i');
-                        skuIcon.className = 'fa fa-book';
+            let skuIcon = document.createElement("i");
+            skuIcon.className = "fa fa-book";
 
-                        let itemCommand = `${itemSKU}`;
+            let itemCommand = `${itemSKU}`;
 
-                        $(skuItemButton).data('itemCommand', itemCommand);
-                        $(skuIcon).data('itemCommand', itemCommand);
-                        skuItemButton.prepend(skuIcon);
-                        $('#bot-utility-elements').append(skuItemButton);
-                    }
+            $(skuItemButton).data("itemCommand", itemCommand);
+            $(skuIcon).data("itemCommand", itemCommand);
+            skuItemButton.prepend(skuIcon);
+            $("#bot-utility-elements").append(skuItemButton);
+          }
 
-                    // Add the "Add Item" button
-                    if (!$("#add-item-button").length) {
-                        let addItemButton = document.createElement('a');
-                        addItemButton.id = 'add-item-button';
-                        addItemButton.className = 'btn btn-default btn-xs';
-                        addItemButton.textContent = ' Add';
+          // Add the "Add Item" button
+          if (!$("#add-item-button").length) {
+            let addItemButton = document.createElement("a");
+            addItemButton.id = "add-item-button";
+            addItemButton.className = "btn btn-default btn-xs";
+            addItemButton.textContent = " Add";
 
-                        let plusIcon = document.createElement('i');
-                        plusIcon.className = 'fa fa-plus';
+            let plusIcon = document.createElement("i");
+            plusIcon.className = "fa fa-plus";
 
-                        let itemCommand = `!add sku=${itemSKU}`;
+            let itemCommand = `!add sku=${itemSKU}`;
 
-                        $(addItemButton).data('itemCommand', itemCommand);
-                        $(plusIcon).data('itemCommand', itemCommand);
-                        addItemButton.prepend(plusIcon);
-                        $('#bot-utility-elements').append(addItemButton);
-                    }
+            $(addItemButton).data("itemCommand", itemCommand);
+            $(plusIcon).data("itemCommand", itemCommand);
+            addItemButton.prepend(plusIcon);
+            $("#bot-utility-elements").append(addItemButton);
+          }
 
-                    // Add the "Update Item" button
-                    if (!$("#update-item-button").length) {
-                        let updateItemButton = document.createElement('a');
-                        updateItemButton.id = 'update-item-button';
-                        updateItemButton.className = 'btn btn-default btn-xs';
-                        updateItemButton.textContent = ' Update';
+          // Add the "Update Item" button
+          if (!$("#update-item-button").length) {
+            let updateItemButton = document.createElement("a");
+            updateItemButton.id = "update-item-button";
+            updateItemButton.className = "btn btn-default btn-xs";
+            updateItemButton.textContent = " Update";
 
-                        let editIcon = document.createElement('i');
-                        editIcon.className = 'fa fa-edit';
+            let editIcon = document.createElement("i");
+            editIcon.className = "fa fa-edit";
 
-                        let itemCommand = `!update sku=${itemSKU}`;
-                        $(updateItemButton).data('itemCommand', itemCommand);
-                        $(editIcon).data('itemCommand', itemCommand);
+            let itemCommand = `!update sku=${itemSKU}`;
+            $(updateItemButton).data("itemCommand", itemCommand);
+            $(editIcon).data("itemCommand", itemCommand);
 
-                        updateItemButton.prepend(editIcon);
-                        $('#bot-utility-elements').append(updateItemButton);
-                    }
+            updateItemButton.prepend(editIcon);
+            $("#bot-utility-elements").append(updateItemButton);
+          }
 
-                    // Add the "Remove Item" button
-                    if (!$("#remove-item-button").length) {
-                        let removeItemButton = document.createElement('a');
-                        removeItemButton.id = 'remove-item-button';
-                        removeItemButton.className = 'btn btn-default btn-xs';
-                        removeItemButton.textContent = ' Remove';
+          // Add the "Remove Item" button
+          if (!$("#remove-item-button").length) {
+            let removeItemButton = document.createElement("a");
+            removeItemButton.id = "remove-item-button";
+            removeItemButton.className = "btn btn-default btn-xs";
+            removeItemButton.textContent = " Remove";
 
-                        let minusIcon = document.createElement('i');
-                        minusIcon.className = 'fa fa-minus';
+            let minusIcon = document.createElement("i");
+            minusIcon.className = "fa fa-minus";
 
-                        let itemCommand = `!remove sku=${itemSKU}`;
-                        $(removeItemButton).data('itemCommand', itemCommand);
-                        $(minusIcon).data('itemCommand', itemCommand);
+            let itemCommand = `!remove sku=${itemSKU}`;
+            $(removeItemButton).data("itemCommand", itemCommand);
+            $(minusIcon).data("itemCommand", itemCommand);
 
-                        removeItemButton.prepend(minusIcon);
-                        $('#bot-utility-elements').append(removeItemButton);
-                    }
+            removeItemButton.prepend(minusIcon);
+            $("#bot-utility-elements").append(removeItemButton);
+          }
 
-                    $('#sku-item-button').on('click', event => {
-                        GM_setClipboard($(event.target).data('itemCommand'), 'text/plain');
-                    })
+          // Add the "Pricecheck Item" button
+          if (!$("#pricecheck-item-button").length) {
+            let pricecheckItemButton = document.createElement("a");
+            pricecheckItemButton.id = "pricecheck-item-button";
+            pricecheckItemButton.className = "btn btn-default btn-xs";
+            pricecheckItemButton.textContent = " PC";
 
-                    $('#add-item-button').on('click', event => {
-                        GM_setClipboard($(event.target).data('itemCommand'), 'text/plain');
-                    })
+            let priceIcon = document.createElement("i");
+            priceIcon.className = "fa fa-tags";
 
-                    $('#update-item-button').on('click', event => {
-                        GM_setClipboard($(event.target).data('itemCommand'), 'text/plain');
-                    })
+            let itemCommand = `!pricecheck sku=${itemSKU}`;
+            $(pricecheckItemButton).data("itemCommand", itemCommand);
+            $(priceIcon).data("itemCommand", itemCommand);
 
-                    $('#remove-item-button').on('click', event => {
-                        GM_setClipboard($(event.target).data('itemCommand'), 'text/plain');
-                    })
+            pricecheckItemButton.prepend(priceIcon);
+            $("#bot-utility-elements").append(pricecheckItemButton);
+          }
 
-                    clearInterval(addUtilitiesLoad);
-                }, 50);
+          $("#sku-item-button").on("click", (event) => {
+            GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
+          });
 
-                setTimeout(function () {
-                    clearInterval(addUtilitiesLoad);
-                }, 1000);
+          $("#add-item-button").on("click", (event) => {
+            GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
+          });
 
-                clearInterval(popoverLoad);
-            }
+          $("#update-item-button").on("click", (event) => {
+            GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
+          });
+
+          $("#remove-item-button").on("click", (event) => {
+            GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
+          });
+
+          $("#pricecheck-item-button").on("click", (event) => {
+            GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
+          });
+
+          clearInterval(addUtilitiesLoad);
         }, 50);
 
         setTimeout(function () {
-            clearInterval(popoverLoad);
-        }, 750);
-    });
+          clearInterval(addUtilitiesLoad);
+        }, 1000);
 
-    function itemLookup(itemElement) {
-        let item = $(itemElement);
+        clearInterval(popoverLoad);
+      }
+    }, 50);
 
-        let itemDefIndex = item.attr("data-defindex");
-        let itemQuality = item.attr("data-quality");
-        let isUncraftable = item.attr("data-craftable") !== "1";
-        let itemEffectID = item.attr("data-effect_id");
+    setTimeout(function () {
+      clearInterval(popoverLoad);
+    }, 750);
+  });
 
-        let itemSkinInfo = item.find(".item-icon");
-        let itemWear, itemSkin;
-        if (itemSkinInfo.length > 0) {
-            itemSkinInfo = itemSkinInfo.css("background-image").match(/warpaint\/[(?!_)\S]+_[0-9]+_[0-9]+_[0-9]+\.png/g);
-            if (itemSkinInfo !== null) {
-                itemSkin = itemSkinInfo[0].split("_")[1];
-                itemWear = itemSkinInfo[0].split("_")[2];
-            }
-        }
+  function itemLookup(itemElement) {
+    let item = $(itemElement);
 
-        let isStrange = item.attr("data-quality_elevated") === "11";
-        let itemKillstreak = item.attr("data-ks_tier");
-        let isFestivized = item.attr("data-original-title")?.toLowerCase().indexOf("festivized") !== -1;
+    let itemDefIndex = item.attr("data-defindex");
+    let itemQuality = item.attr("data-quality");
+    let isUncraftable = item.attr("data-craftable") !== "1";
+    let itemEffectID = item.attr("data-effect_id");
 
-        // Get the full item SKU, and be sure to remove any pesky whitespaces
-        return `${itemDefIndex};\
-    ${itemQuality}\
-    ${isUncraftable ? ';uncraftable' : ''}\
-    ${itemEffectID ? `;u${itemEffectID}` : ''}\
-    ${itemSkinInfo ? `;w${itemWear};pk${itemSkin}` : ''}\
-    ${isStrange ? ';strange' : ''}\
-    ${itemKillstreak ? `;kt-${itemKillstreak}` : ''}\
-    ${isFestivized ? ';festive' : ''}`
-            .replace(/\s/g, '');
+    let itemSkinInfo = item.find(".item-icon");
+    let itemWear, itemSkin;
+    if (itemSkinInfo.length > 0) {
+      itemSkinInfo = itemSkinInfo
+        .css("background-image")
+        .match(/warpaint\/[(?!_)\S]+_[0-9]+_[0-9]+_[0-9]+\.png/g);
+      if (itemSkinInfo !== null) {
+        itemSkin = itemSkinInfo[0].split("_")[1];
+        itemWear = itemSkinInfo[0].split("_")[2];
+      }
     }
 
+    let isStrange = item.attr("data-quality_elevated") === "11";
+    let itemKillstreak = item.attr("data-ks_tier");
+    let isFestivized =
+      item.attr("data-original-title")?.toLowerCase().indexOf("festivized") !==
+      -1;
+
+    // Get the full item SKU, and be sure to remove any pesky whitespaces
+    return `${itemDefIndex};\
+    ${itemQuality}\
+    ${isUncraftable ? ";uncraftable" : ""}\
+    ${itemEffectID ? `;u${itemEffectID}` : ""}\
+    ${itemSkinInfo ? `;w${itemWear};pk${itemSkin}` : ""}\
+    ${isStrange ? ";strange" : ""}\
+    ${itemKillstreak ? `;kt-${itemKillstreak}` : ""}\
+    ${isFestivized ? ";festive" : ""}`.replace(/\s/g, "");
+  }
 })();
