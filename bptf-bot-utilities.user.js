@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Backpack.tf - Bot Utilities
 // @namespace    https://github.com/Bonfire
-// @version      1.0.2
+// @version      1.0.3
 // @description  A script to provide various TF2Autobot utilities on backpack.tf
 // @author       Bon
 // @downloadURL  https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js
@@ -105,24 +105,6 @@
                         $('#bot-utility-elements').append(removeItemButton);
                     }
 
-                    // Add the "Pricecheck Item" button
-                    if (!$("#pricecheck-item-button").length) {
-                        let pricecheckItemButton = document.createElement('a');
-                        pricecheckItemButton.id = 'pricecheck-item-button';
-                        pricecheckItemButton.className = 'btn btn-default btn-xs';
-                        pricecheckItemButton.textContent = ' Pricecheck';
-
-                        let priceIcon = document.createElement('i');
-                        priceIcon.className = 'fa fa-tags';
-
-                        let itemCommand = `!pricecheck sku=${itemSKU}`;
-                        $(pricecheckItemButton).data('itemCommand', itemCommand);
-                        $(priceIcon).data('itemCommand', itemCommand);
-
-                        pricecheckItemButton.prepend(priceIcon);
-                        $('#bot-utility-elements').append(pricecheckItemButton);
-                    }
-
                     $('#sku-item-button').on('click', event => {
                         GM_setClipboard($(event.target).data('itemCommand'), 'text/plain');
                     })
@@ -136,10 +118,6 @@
                     })
 
                     $('#remove-item-button').on('click', event => {
-                        GM_setClipboard($(event.target).data('itemCommand'), 'text/plain');
-                    })
-
-                    $('#pricecheck-item-button').on('click', event => {
                         GM_setClipboard($(event.target).data('itemCommand'), 'text/plain');
                     })
 

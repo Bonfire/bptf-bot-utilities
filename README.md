@@ -26,6 +26,14 @@ You can also install this script by manually pasting the code found in the above
 _Newly added buttons for easily copying commands are highlighted above_
 
 ## Changelog
+**1.0.3**
+
+Added:
+* "Item SKU" button on item hover - [@idinium96](https://github.com/idinium96)
+
+Removed:
+* "Pricecheck item" button on item hover (due to very niche use cases)
+
 **1.0.2**
 
 Added:
