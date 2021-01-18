@@ -33,6 +33,24 @@
                 let addUtilitiesLoad = setInterval(function () {
                     let itemSKU = itemLookup(itemElement);
 
+                    // Add the "<sku>" button
+                    if (!$("#sku-item-button").length) {
+                        let skuItemButton = document.createElement('a');
+                        skuItemButton.id = 'sku-item-button';
+                        skuItemButton.className = 'btn btn-default btn-xs';
+                        skuItemButton.textContent = ` ${itemSKU}`;
+
+                        let skuIcon = document.createElement('i');
+                        skuIcon.className = 'fa fa-book';
+
+                        let itemCommand = `${itemSKU}`;
+
+                        $(skuItemButton).data('itemCommand', itemCommand);
+                        $(skuIcon).data('itemCommand', itemCommand);
+                        skuItemButton.prepend(skuIcon);
+                        $('#bot-utility-elements').append(skuItemButton);
+                    }
+
                     // Add the "Add Item" button
                     if (!$("#add-item-button").length) {
                         let addItemButton = document.createElement('a');
@@ -104,6 +122,10 @@
                         pricecheckItemButton.prepend(priceIcon);
                         $('#bot-utility-elements').append(pricecheckItemButton);
                     }
+
+                    $('#sku-item-button').on('click', event => {
+                        GM_setClipboard($(event.target).data('itemCommand'), 'text/plain');
+                    })
 
                     $('#add-item-button').on('click', event => {
                         GM_setClipboard($(event.target).data('itemCommand'), 'text/plain');
