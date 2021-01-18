@@ -1,6 +1,10 @@
 # backpack.tf Bot Utilities
 
-This user script provides various TF2Autobot (and TF2-Automatic) utilities on [backpack.tf](https://backpack.tf/)
+This user script provides various TF2Autobot (and TF2-Automatic) utilities on [backpack.tf](https://backpack.tf/).
+
+If this script helped you out, feel free to become a [⭐Stargazer⭐](https://github.com/Bonfire/bptf-bot-utilities/stargazers)!
+
+If you have any suggestions or bug reports, please create an [Issue](https://github.com/Bonfire/bptf-bot-utilities/issues).
 
 ## Features
 
@@ -8,6 +12,7 @@ This user script provides various TF2Autobot (and TF2-Automatic) utilities on [b
 - "Add to pricelist" button on item hover
 - "Update pricelist" button on item hover
 - "Remove from pricelist" button on item hover
+- "Pricecheck item" button on item hover
 
 ## Installation
 
@@ -21,9 +26,11 @@ To install this user script, simply navigate to [this link](https://github.com/B
 
 You can also install this script by manually pasting the code found in the above link into a new user script.
 
+**Note: To receive automatic updates when this script updates, please be sure to enable automatic update checking for this script on your preferred User Script Manager.**
+
 ## Example
 
-![Item Hover Buttons](https://i.imgur.com/rkrUF8L.png)
+![Item Hover Buttons](https://i.imgur.com/NszrSKc.png)
 
 _Newly added buttons for easily copying commands are highlighted above_
 
@@ -35,6 +42,8 @@ Improved:
 
 - "Pricecheck item" button on item hover (Reverted)
 - Removed text from SKU button and condensed text for Pricecheck button
+- Add "Australium" item quality to SKU lookup
+- Add "Crate Series" item attribute to SKU lookup
 
 **1.0.3**
 

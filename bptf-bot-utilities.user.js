@@ -183,15 +183,23 @@
     let isFestivized =
       item.attr("data-original-title")?.toLowerCase().indexOf("festivized") !==
       -1;
+    let isAustralium = item.attr("data-australium") === "1";
+
+    // Other item attributes
+    let crateSeries = item.attr("data-crate");
 
     // Get the full item SKU, and be sure to remove any pesky whitespaces
-    return `${itemDefIndex};\
+    let itemSKU = `${itemDefIndex};\
     ${itemQuality}\
+    ${itemEffectID ? `;u${itemEffectID}` : ""}\    
+    ${isAustralium ? ";australium" : ""}\
     ${isUncraftable ? ";uncraftable" : ""}\
-    ${itemEffectID ? `;u${itemEffectID}` : ""}\
     ${itemSkinInfo ? `;w${itemWear};pk${itemSkin}` : ""}\
     ${isStrange ? ";strange" : ""}\
     ${itemKillstreak ? `;kt-${itemKillstreak}` : ""}\
-    ${isFestivized ? ";festive" : ""}`.replace(/\s/g, "");
+    ${isFestivized ? ";festive" : ""}\
+    ${crateSeries ? `;c${crateSeries}` : ""}`;
+
+    return itemSKU.replace(/\s/g, "");
   }
 })();
