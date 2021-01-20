@@ -36,6 +36,12 @@ _Newly added buttons for easily copying commands are highlighted above_
 
 ## Changelog
 
+**1.0.5**
+
+Improved:
+
+- Add "Target" item attribute to SKU lookup
+
 **1.0.4**
 
 Improved:
