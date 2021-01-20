@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Backpack.tf - Bot Utilities
 // @namespace    https://github.com/Bonfire
-// @version      1.0.4
+// @version      1.0.5
 // @description  A script to provide various TF2Autobot utilities on backpack.tf
 // @author       Bon
 // @downloadURL  https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js
@@ -187,6 +187,7 @@
 
     // Other item attributes
     let crateSeries = item.attr("data-crate");
+    let itemTarget = item.attr("data-priceindex").split("-")[1];
 
     // Get the full item SKU, and be sure to remove any pesky whitespaces
     let itemSKU = `${itemDefIndex};\
@@ -197,6 +198,7 @@
     ${itemSkinInfo ? `;w${itemWear};pk${itemSkin}` : ""}\
     ${isStrange ? ";strange" : ""}\
     ${itemKillstreak ? `;kt-${itemKillstreak}` : ""}\
+    ${itemTarget ? `;td-${itemTarget}` : ""}\
     ${isFestivized ? ";festive" : ""}\
     ${crateSeries ? `;c${crateSeries}` : ""}`;
 
