@@ -13,7 +13,38 @@
 // ==/UserScript==
 
 (function () {
-  "use strict";
+  ("use strict");
+
+  // Stock item def index mappings
+  const stockMap = new Map();
+  stockMap
+    .set("0", "190") // Bat
+    .set("1", "191") // Bottle
+    .set("2", "192") // Fireaxe
+    .set("3", "193") // Club
+    .set("4", "194") // Knife
+    .set("5", "195") // Fists
+    .set("6", "196") // Shovel
+    .set("7", "197") // Wrench
+    .set("8", "198") // Bonesaw
+    .set("9", "199") // Shotgun - Engineer (Primary)
+    .set("10", "199") // Shotgun - Soldier
+    .set("11", "199") // Shotgun - Heavy
+    .set("12", "199") // Shotgun - Pyro
+    .set("13", "200") // Scattergun
+    .set("14", "201") // Sniper Rifle
+    .set("15", "202") // Minigun
+    .set("16", "203") // SMG
+    .set("17", "204") // Syringe Gun
+    .set("18", "205") // Rocket Launcher
+    .set("19", "206") // Grenade Launcher
+    .set("20", "207") // Stickybomb Launcher
+    .set("21", "208") // Flamethrower
+    .set("22", "209") // Pistol - Engineer
+    .set("23", "209") // Pistol - Scout
+    .set("24", "210") // Revolver
+    .set("29", "211") // Medigun
+    .set("30", "212"); // Invis Watch
 
   // Modify popover
   $(document).on("mouseover", ".item", function () {
@@ -161,7 +192,11 @@
   function itemLookup(itemElement) {
     let item = $(itemElement);
 
-    let itemDefIndex = item.attr("data-defindex");
+    let tempDefIndex = item.attr("data-defindex");
+    let itemDefIndex = stockMap.has(tempDefIndex)
+      ? stockMap.get(tempDefIndex)
+      : tempDefIndex;
+
     let itemQuality = item.attr("data-quality");
     let isUncraftable = item.attr("data-craftable") !== "1";
     let itemEffectID = item.attr("data-effect_id");
