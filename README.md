@@ -36,11 +36,17 @@ _Newly added buttons for easily copying commands are highlighted above_
 
 ## Changelog
 
+**1.0.8**
+
+Fixed:
+
+- Stock item mapping for the "Construction PDA"
+
 **1.0.7**
 
 Fixed:
 
-- Stock item mapping for the "Construction PDA" and "Sapper"
+- Stock item mapping for the "Sapper"
 
 **1.0.6**
 

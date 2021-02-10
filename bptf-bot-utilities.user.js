@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Backpack.tf - Bot Utilities
 // @namespace    https://github.com/Bonfire
-// @version      1.0.7
+// @version      1.0.8
 // @description  A script to provide various TF2Autobot utilities on backpack.tf
 // @author       Bon
 // @downloadURL  https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js
@@ -43,8 +43,8 @@
     .set("22", "209") // Pistol - Engineer
     .set("23", "209") // Pistol - Scout
     .set("24", "210") // Revolver
+    .set("25", "737") // Construction PDA
     .set("29", "211") // Medigun
-    .set("30", "212") // Invis Watch
     .set("30", "212") // Invis Watch
     .set("735", "736"); // Sapper
 
