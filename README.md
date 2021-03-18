@@ -2,9 +2,12 @@
 
 This user script provides various TF2Autobot (and TF2-Automatic) utilities on [backpack.tf](https://backpack.tf/).
 
-If this script helped you out, feel free to become a [⭐Stargazer⭐](https://github.com/Bonfire/bptf-bot-utilities/stargazers)!
-
 If you have any suggestions or bug reports, please create an [Issue](https://github.com/Bonfire/bptf-bot-utilities/issues).
+
+If this script helped you out, please feel free to support me by doing the following: 
+* Become a [⭐Stargazer⭐](https://github.com/Bonfire/bptf-bot-utilities/stargazers)
+
+* <a href="https://www.buymeacoffee.com/bonf" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
 ## Features
 
