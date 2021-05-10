@@ -229,7 +229,7 @@
     if (priceIndex !== "0") {
       switch (item.attr('data-base_name')) {
         case 'Fabricator':
-          [itemOutput, itemQuality, itemTarget] = priceIndex
+          [itemOutput, itemOutputQuality, itemTarget] = priceIndex
           break;
         case 'Kit':
           itemTarget = priceIndex[1];
