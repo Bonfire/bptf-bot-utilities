@@ -226,7 +226,7 @@
     let crateSeries = item.attr("data-crate");
     let itemTarget, itemOutput, itemOutputQuality;
     const priceIndex = item.attr('data-priceindex').split('-');
-    if (priceIndex !== "0") {
+    if (priceIndex[0] !== "0") {
       switch (item.attr('data-base_name')) {
         case 'Fabricator':
           [itemOutput, itemOutputQuality, itemTarget] = priceIndex
