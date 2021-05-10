@@ -224,8 +224,20 @@
 
     // Other item attributes
     let crateSeries = item.attr("data-crate");
-    let itemTarget = item.attr("data-priceindex").split("-")[1];
-
+    let itemTarget, itemOutput, itemOutputQuality;
+    const priceIndex = item.attr('data-priceindex').split('-');
+    if (priceIndex !== "0") {
+      switch (item.attr('data-base_name')) {
+        case 'Fabricator':
+          [itemOutput, itemQuality, itemTarget] = priceIndex
+          break;
+        case 'Kit':
+          itemTarget = priceIndex[1];
+          break;
+        case 'Strangifier':
+          itemTarget = priceIndex[0];
+      }
+    }
     // Get the full item SKU, and be sure to remove any pesky whitespaces
     let itemSKU = `${itemDefIndex};\
     ${itemQuality}\
@@ -237,8 +249,10 @@
     ${itemKillstreak ? `;kt-${itemKillstreak}` : ""}\
     ${itemTarget ? `;td-${itemTarget}` : ""}\
     ${isFestivized ? ";festive" : ""}\
-    ${crateSeries ? `;c${crateSeries}` : ""}`;
-
+    ${crateSeries ? `;c${crateSeries}` : ""}\
+    ${itemOutput ? `;od-${itemOutput}` : ""}\
+    ${itemOutputQuality ? `;oq-${itemOutputQuality}` : ""}`;
+    
     return itemSKU.replace(/\s/g, "");
   }
 })();
