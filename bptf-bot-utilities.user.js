@@ -238,6 +238,9 @@
           itemTarget = priceIndex[0];
       }
     }
+    if (itemDefIndex == "9536") {
+        itemDefIndex = (itemSkin>200?"17":"16") + itemSkin;
+    }
     // Get the full item SKU, and be sure to remove any pesky whitespaces
     let itemSKU = `${itemDefIndex};\
     ${itemQuality}\
