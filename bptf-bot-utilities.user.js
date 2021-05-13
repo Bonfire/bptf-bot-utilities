@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Backpack.tf - Bot Utilities
 // @namespace    https://github.com/Bonfire
-// @version      1.0.9
+// @version      1.0.10
 // @description  A script to provide various TF2Autobot utilities on backpack.tf
 // @author       Bon
 // @downloadURL  https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js
@@ -239,7 +239,8 @@
       }
     }
     if (itemDefIndex == "9536") {
-        itemDefIndex = ((Math.floor((itemSkin)/100))%2 === 0 ? "17" : "16") + itemSkin;
+      itemDefIndex =
+        (Math.floor(itemSkin / 100) % 2 === 0 ? "17" : "16") + itemSkin;
     }
     // Get the full item SKU, and be sure to remove any pesky whitespaces
     let itemSKU = `${itemDefIndex};\
