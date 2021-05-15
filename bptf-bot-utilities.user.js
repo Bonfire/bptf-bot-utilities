@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Backpack.tf - Bot Utilities
 // @namespace    https://github.com/Bonfire
-// @version      1.0.10
+// @version      1.0.11
 // @description  A script to provide various TF2Autobot utilities on backpack.tf
 // @author       Bon
 // @downloadURL  https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js
@@ -234,9 +234,9 @@
         case "Kit":
           itemTarget = priceIndex[1];
           break;
-        case 'Strangifier':
-        case 'Unusualifier':
-            itemTarget = priceIndex[0];
+        case "Strangifier":
+        case "Unusualifier":
+          itemTarget = priceIndex[0];
       }
     }
     if (itemDefIndex == "9536") {

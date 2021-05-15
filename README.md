@@ -44,6 +44,12 @@ _Newly added buttons for easily copying commands are highlighted above_
 
 Fixed:
 
+- SKU generation for Unusualifiers - [@Preport](https://github.com/Preport)
+
+**1.0.10**
+
+Fixed:
+
 - SKU generation for War Paints - [@Preport](https://github.com/Preport)
 
 **1.0.9**
