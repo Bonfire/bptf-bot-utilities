@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Backpack.tf - Bot Utilities
 // @namespace    https://github.com/Bonfire
-// @version      1.0.8
+// @version      1.0.10
 // @description  A script to provide various TF2Autobot utilities on backpack.tf
 // @author       Bon
 // @downloadURL  https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js
@@ -225,13 +225,13 @@
     // Other item attributes
     let crateSeries = item.attr("data-crate");
     let itemTarget, itemOutput, itemOutputQuality;
-    const priceIndex = item.attr('data-priceindex').split('-');
+    const priceIndex = item.attr("data-priceindex").split("-");
     if (priceIndex[0] !== "0") {
-      switch (item.attr('data-base_name')) {
-        case 'Fabricator':
-          [itemOutput, itemOutputQuality, itemTarget] = priceIndex
+      switch (item.attr("data-base_name")) {
+        case "Fabricator":
+          [itemOutput, itemOutputQuality, itemTarget] = priceIndex;
           break;
-        case 'Kit':
+        case "Kit":
           itemTarget = priceIndex[1];
           break;
         case 'Strangifier':
@@ -240,7 +240,8 @@
       }
     }
     if (itemDefIndex == "9536") {
-        itemDefIndex = ((Math.floor((itemSkin)/100))%2 === 0 ? "17" : "16") + itemSkin;
+      itemDefIndex =
+        (Math.floor(itemSkin / 100) % 2 === 0 ? "17" : "16") + itemSkin;
     }
     // Get the full item SKU, and be sure to remove any pesky whitespaces
     let itemSKU = `${itemDefIndex};\
@@ -256,7 +257,7 @@
     ${crateSeries ? `;c${crateSeries}` : ""}\
     ${itemOutput ? `;od-${itemOutput}` : ""}\
     ${itemOutputQuality ? `;oq-${itemOutputQuality}` : ""}`;
-    
+
     return itemSKU.replace(/\s/g, "");
   }
 })();
