@@ -234,8 +234,9 @@
         case "Kit":
           itemTarget = priceIndex[1];
           break;
-        case "Strangifier":
-          itemTarget = priceIndex[0];
+        case 'Strangifier':
+        case 'Unusualifier':
+            itemTarget = priceIndex[0];
       }
     }
     if (itemDefIndex == "9536") {
