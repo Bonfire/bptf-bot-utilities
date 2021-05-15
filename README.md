@@ -40,7 +40,7 @@ _Newly added buttons for easily copying commands are highlighted above_
 
 ## Changelog
 
-**1.0.10**
+**1.0.11**
 
 Fixed:
 
