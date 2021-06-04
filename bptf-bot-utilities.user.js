@@ -195,6 +195,7 @@
     let item = $(itemElement);
 
     let tempDefIndex = item.attr("data-defindex");
+    let itemName = item.attr("data-original-title")
     let itemDefIndex = stockMap.has(tempDefIndex)
       ? stockMap.get(tempDefIndex)
       : tempDefIndex;
@@ -228,6 +229,19 @@
     const priceIndex = item.attr("data-priceindex").split("-");
     if (priceIndex[0] !== "0") {
       switch (item.attr("data-base_name")) {
+        case "Chemistry Set":
+          // Only change defindex if it's a buy listing or it's the item on the stats page.
+          // So it won't change anything if it's from someones inventory or a sell listing.
+          if (!item.attr("data-original_id")) {
+              if (itemName.includes("Festive")) itemDefIndex = "20007";
+              else if (itemName.includes("Collector's")) itemDefIndex = "20006";
+              // Unsure about this one couldn't find any items might be unused.
+              else if (itemName.includes("Strange")) itemDefIndex = "20008";
+              // Assume all strangifier's are series 2 which they are definetly not :(
+              // Used series 2 since it's the one with the biggest volume (Don't quote me on that).
+              // Available defindexes; Series 1: 20000, Series 1 Rare: 20001, Series 2: 20005, Series 3: 20009.
+              else if (itemName.includes("Strangifier")) itemDefIndex = "20005";
+          }
         case "Fabricator":
           [itemOutput, itemOutputQuality, itemTarget] = priceIndex;
           break;
