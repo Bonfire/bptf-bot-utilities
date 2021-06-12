@@ -40,6 +40,12 @@ _Newly added buttons for easily copying commands are highlighted above_
 
 ## Changelog
 
+**1.0.12**
+
+Fixed:
+
+- SKU generation for Chemistry Sets - [@Preport](https://github.com/Preport)
+
 **1.0.11**
 
 Fixed:

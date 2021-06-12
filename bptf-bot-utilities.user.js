@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Backpack.tf - Bot Utilities
 // @namespace    https://github.com/Bonfire
-// @version      1.0.11
+// @version      1.0.12
 // @description  A script to provide various TF2Autobot utilities on backpack.tf
 // @author       Bon
 // @downloadURL  https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js
@@ -195,7 +195,7 @@
     let item = $(itemElement);
 
     let tempDefIndex = item.attr("data-defindex");
-    let itemName = item.attr("data-original-title")
+    let itemName = item.attr("data-original-title");
     let itemDefIndex = stockMap.has(tempDefIndex)
       ? stockMap.get(tempDefIndex)
       : tempDefIndex;
