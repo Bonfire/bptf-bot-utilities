@@ -17,6 +17,8 @@ If this script helped you out, please feel free to support me by doing the any o
 - "Update pricelist" button on item hover
 - "Remove from pricelist" button on item hover
 - "Pricecheck item" button on item hover
+- "Match listing" button on item hover
+   - **Note: This requires you to regularly update the `KEY_PRICE` found at the top of the script to receive accurate prices for matching. This value should contain the current price of one key in refined.**
 
 ## Installation
 
