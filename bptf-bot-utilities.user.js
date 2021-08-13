@@ -1,22 +1,36 @@
 // ==UserScript==
 // @name         Backpack.tf - Bot Utilities
 // @namespace    https://github.com/Bonfire
-// @version      1.0.14
+// @version      1.0.15
 // @description  A script to provide various TF2Autobot utilities on backpack.tf
 // @author       Bon
 // @downloadURL  https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js
 // @updateURL    https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.meta.js
 // @include      /^https?:\/\/backpack\.tf\/.*
 // @grant        GM_setClipboard
+// @grant        GM_xmlhttpRequest
+// @grant        GM_setValue
+// @grant        GM_getValue
 // @require      https://code.jquery.com/jquery-3.6.0.slim.min.js
 // @run-at       document-end
 // ==/UserScript==
 
-(function () {
+(async function () {
   ("use strict");
 
-  // Place the value of one key in refined here (for the Match command)
-  let KEY_PRICE = 60.44;
+  // Fetch the price of a key in refined and store it
+  // Only fetch this if the user has no keyData stored or it's been 30 minutes since the last fetch
+  if (
+    !GM_getValue("keyData") ||
+    new Date() - GM_getValue("keyData")["timeStamp"] > 30 * 60 * 1000
+  ) {
+    let KEY_PRICE = fetchKeyPrice();
+  } else {
+    let KEY_PRICE = GM_getValue("keyData")["keyPrice"];
+    console.log(
+      "Key price fetched from storage. Current key price: " + KEY_PRICE + " ref"
+    );
+  }
 
   // Stock item def index mappings
   const stockMap = new Map();
@@ -320,6 +334,33 @@
         return [null, splitString[0].replace("ref", "").trim()];
       }
     }
+  }
+
+  function fetchKeyPrice() {
+    // Reach out to Prices.TF to grab the current key selling price
+    GM_xmlhttpRequest({
+      method: "GET",
+      url: "https://api.prices.tf/items/5021;6?src=bptf",
+      onload: function (response) {
+        // Parse the sell price of the key in refined
+        var keyResponse = JSON.parse(response.responseText);
+
+        // Log to the user the current key price
+        console.log(
+          "Fetched key price: " + keyResponse["sell"]["metal"] + " ref"
+        );
+
+        // Set the KEY_PRICE
+        KEY_PRICE = keyResponse["sell"]["metal"];
+
+        console.log("Set key price");
+
+        // Store the KEY_PRICE and the current timestamp
+        GM_setValue("keyData", { keyPrice: KEY_PRICE, timeStamp: new Date() });
+
+        console.log("Stored key price for 30 minutes");
+      },
+    });
   }
 
   $("#sku-item-button").on("click", (event) => {

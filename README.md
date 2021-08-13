@@ -20,8 +20,7 @@ If this script helped you out, please feel free to support me by doing the any o
 - "Remove from pricelist" button on item hover
 - "Pricecheck item" button on item hover
 - "Match listing" button on item hover
-   - **Note: This requires you to regularly update the `KEY_PRICE` found at the top of the script to receive accurate prices for matching. This value should contain the current price of one key in refined.**
-   - **Please be sure to double-check item prices before sending the command to your bot! I will not be held responsible for incorrect item prices as a result of this command!**
+  - **Note: Current key prices are fetched automatically. Please be sure to double-check item prices before sending the command to your bot! I will not be held responsible for incorrect item prices as a result of this command!**
 
 ## Installation
 
@@ -45,6 +44,12 @@ _Newly added buttons for easily copying commands are highlighted above_
 
 ## Changelog
 
+**1.0.15**
+
+Added:
+
+- Automatic fetching and storage of current key prices for the "Match Listing" command
+
 **1.0.14**
 
 Fixed:
@@ -56,7 +61,6 @@ Fixed:
 Added:
 
 - Match listing command to match buy/sell order prices
-  - **Note: This requires you to update the `KEY_PRICE` found at the top of the script to receive accurate prices. This value should contain the current price of one key in refined.**
 
 **1.0.12**
 
