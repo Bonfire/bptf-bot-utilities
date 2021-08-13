@@ -38,7 +38,7 @@ You can also install this script by manually pasting the code found in the above
 
 ## Example
 
-![Item Hover Buttons](https://i.imgur.com/NszrSKc.png)
+![Item Hover Buttons](https://i.imgur.com/lhlzfRy.png)
 
 _Newly added buttons for easily copying commands are highlighted above_
 
