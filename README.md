@@ -40,6 +40,12 @@ _Newly added buttons for easily copying commands are highlighted above_
 
 ## Changelog
 
+**1.0.14**
+
+Fixed:
+
+- Refactored event code to be outside element definition code. Should prevent some rare cases where commands would return "undefined"
+
 **1.0.13**
 
 Added:
