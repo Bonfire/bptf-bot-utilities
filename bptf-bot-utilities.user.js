@@ -8,7 +8,7 @@
 // @updateURL    https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.meta.js
 // @include      /^https?:\/\/backpack\.tf\/.*
 // @grant        GM_setClipboard
-// @require      https://code.jquery.com/jquery-3.5.1.slim.min.js
+// @require      https://code.jquery.com/jquery-3.6.0.slim.min.js
 // @run-at       document-end
 // ==/UserScript==
 
@@ -189,30 +189,6 @@
             $("#bot-utility-elements").append(matchListingButton);
           }
 
-          $("#sku-item-button").on("click", (event) => {
-            GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
-          });
-
-          $("#add-item-button").on("click", (event) => {
-            GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
-          });
-
-          $("#update-item-button").on("click", (event) => {
-            GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
-          });
-
-          $("#remove-item-button").on("click", (event) => {
-            GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
-          });
-
-          $("#pricecheck-item-button").on("click", (event) => {
-            GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
-          });
-
-          $("#match-listing-button").on("click", (event) => {
-            GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
-          });
-
           clearInterval(addUtilitiesLoad);
         }, 50);
 
@@ -345,4 +321,28 @@
       }
     }
   }
+
+  $("#sku-item-button").on("click", (event) => {
+    GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
+  });
+
+  $("#add-item-button").on("click", (event) => {
+    GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
+  });
+
+  $("#update-item-button").on("click", (event) => {
+    GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
+  });
+
+  $("#remove-item-button").on("click", (event) => {
+    GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
+  });
+
+  $("#pricecheck-item-button").on("click", (event) => {
+    GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
+  });
+
+  $("#match-listing-button").on("click", (event) => {
+    GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
+  });
 })();
