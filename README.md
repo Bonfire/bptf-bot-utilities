@@ -40,6 +40,13 @@ _Newly added buttons for easily copying commands are highlighted above_
 
 ## Changelog
 
+**1.0.13**
+
+Added:
+
+- Match command to match buy/sell order prices
+  - **Note: This requires you to update the `KEY_PRICE` found at the top of the script to receive accurate prices. This value should contain the current price of one key in refined.**
+
 **1.0.12**
 
 Fixed:

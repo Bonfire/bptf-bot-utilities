@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Backpack.tf - Bot Utilities
 // @namespace    https://github.com/Bonfire
-// @version      1.0.12
+// @version      1.0.13
 // @description  A script to provide various TF2Autobot utilities on backpack.tf
 // @author       Bon
 // @downloadURL  https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js
@@ -14,6 +14,9 @@
 
 (function () {
   ("use strict");
+
+  // Place the value of one key in refined here (for the Match command)
+  let KEY_PRICE = 60.44;
 
   // Stock item def index mappings
   const stockMap = new Map();
@@ -154,6 +157,37 @@
             pricecheckItemButton.prepend(priceIcon);
             $("#bot-utility-elements").append(pricecheckItemButton);
           }
+          // Add the "Match Listing" button
+          if (
+            $(hoveredItem).data("listing_intent") &&
+            !$("#match-listing-button").length
+          ) {
+            let matchListingButton = document.createElement("a");
+            matchListingButton.id = "match-listing-button";
+            matchListingButton.className = "btn btn-default btn-xs";
+            matchListingButton.textContent = " Match";
+
+            let matchIcon = document.createElement("i");
+            matchIcon.className = "fa fa-arrow-circle-down";
+
+            let itemCommand = "";
+            let [keyPrice, metalPrice] = extractPrice($(hoveredItem));
+            if ($(hoveredItem).data("listing_intent") === "buy") {
+              itemCommand = `!update sku=${itemSKU}${
+                keyPrice != null ? "&buy.keys=" + keyPrice : ""
+              }${metalPrice != null ? "&buy.metal=" + metalPrice : ""} `;
+            } else {
+              itemCommand = `!update sku=${itemSKU}${
+                keyPrice != null ? "&sell.keys=" + keyPrice : ""
+              }${metalPrice != null ? "&sell.metal=" + metalPrice : ""} `;
+            }
+
+            $(matchListingButton).data("itemCommand", itemCommand);
+            $(matchIcon).data("itemCommand", itemCommand);
+
+            matchListingButton.prepend(matchIcon);
+            $("#bot-utility-elements").append(matchListingButton);
+          }
 
           $("#sku-item-button").on("click", (event) => {
             GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
@@ -172,6 +206,10 @@
           });
 
           $("#pricecheck-item-button").on("click", (event) => {
+            GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
+          });
+
+          $("#match-listing-button").on("click", (event) => {
             GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
           });
 
@@ -273,5 +311,38 @@
     ${itemOutputQuality ? `;oq-${itemOutputQuality}` : ""}`;
 
     return itemSKU.replace(/\s/g, "");
+  }
+
+  function extractPrice(hoveredItem) {
+    let listingPrice = $(hoveredItem).data("listing_price");
+
+    // Split the string in the event that the item has a key, ref price
+    let splitString = listingPrice.split(",");
+
+    // If we are working with a key, ref price...
+    if (splitString.length > 1) {
+      return [
+        splitString[0].replace("keys", "").replace("key", "").trim(),
+        splitString[1].replace("ref", "").trim(),
+      ];
+    } else {
+      if (splitString[0].includes("key")) {
+        // If the item is priced in the "X keys" format
+        let keyPrice = splitString[0]
+          .replace("keys", "")
+          .replace("key", "")
+          .trim();
+        let splitKey = keyPrice.split(".");
+
+        if (splitKey.length > 1) {
+          return [splitKey[0], KEY_PRICE * (splitKey[1] / 10)];
+        } else {
+          return [keyPrice, null];
+        }
+      } else {
+        // If the item is priced in the "X ref" format
+        return [null, splitString[0].replace("ref", "").trim()];
+      }
+    }
   }
 })();
