@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Backpack.tf - Bot Utilities
 // @namespace    https://github.com/Bonfire
-// @version      1.0.15
+// @version      1.0.16
 // @description  A script to provide various TF2Autobot utilities on backpack.tf
 // @author       Bon
 // @downloadURL  https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js
@@ -98,6 +98,13 @@
             $(skuIcon).data("itemCommand", itemCommand);
             skuItemButton.prepend(skuIcon);
             $("#bot-utility-elements").append(skuItemButton);
+
+            $("#sku-item-button").on("click", (event) => {
+              GM_setClipboard(
+                $(event.target).data("itemCommand"),
+                "text/plain"
+              );
+            });
           }
 
           // Add the "Add Item" button
@@ -116,6 +123,13 @@
             $(plusIcon).data("itemCommand", itemCommand);
             addItemButton.prepend(plusIcon);
             $("#bot-utility-elements").append(addItemButton);
+
+            $("#add-item-button").on("click", (event) => {
+              GM_setClipboard(
+                $(event.target).data("itemCommand"),
+                "text/plain"
+              );
+            });
           }
 
           // Add the "Update Item" button
@@ -134,6 +148,13 @@
 
             updateItemButton.prepend(editIcon);
             $("#bot-utility-elements").append(updateItemButton);
+
+            $("#update-item-button").on("click", (event) => {
+              GM_setClipboard(
+                $(event.target).data("itemCommand"),
+                "text/plain"
+              );
+            });
           }
 
           // Add the "Remove Item" button
@@ -152,6 +173,13 @@
 
             removeItemButton.prepend(minusIcon);
             $("#bot-utility-elements").append(removeItemButton);
+
+            $("#remove-item-button").on("click", (event) => {
+              GM_setClipboard(
+                $(event.target).data("itemCommand"),
+                "text/plain"
+              );
+            });
           }
 
           // Add the "Pricecheck Item" button
@@ -170,7 +198,15 @@
 
             pricecheckItemButton.prepend(priceIcon);
             $("#bot-utility-elements").append(pricecheckItemButton);
+
+            $("#pricecheck-item-button").on("click", (event) => {
+              GM_setClipboard(
+                $(event.target).data("itemCommand"),
+                "text/plain"
+              );
+            });
           }
+
           // Add the "Match Listing" button
           if (
             $(hoveredItem).data("listing_intent") &&
@@ -201,6 +237,13 @@
 
             matchListingButton.prepend(matchIcon);
             $("#bot-utility-elements").append(matchListingButton);
+
+            $("#match-listing-button").on("click", (event) => {
+              GM_setClipboard(
+                $(event.target).data("itemCommand"),
+                "text/plain"
+              );
+            });
           }
 
           clearInterval(addUtilitiesLoad);
@@ -362,28 +405,4 @@
       },
     });
   }
-
-  $("#sku-item-button").on("click", (event) => {
-    GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
-  });
-
-  $("#add-item-button").on("click", (event) => {
-    GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
-  });
-
-  $("#update-item-button").on("click", (event) => {
-    GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
-  });
-
-  $("#remove-item-button").on("click", (event) => {
-    GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
-  });
-
-  $("#pricecheck-item-button").on("click", (event) => {
-    GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
-  });
-
-  $("#match-listing-button").on("click", (event) => {
-    GM_setClipboard($(event.target).data("itemCommand"), "text/plain");
-  });
 })();

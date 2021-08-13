@@ -44,6 +44,12 @@ _Newly added buttons for easily copying commands are highlighted above_
 
 ## Changelog
 
+**1.0.16**
+
+Fixed:
+
+- Issue where sometimes the copy command buttons would not copy the commands to the clipboard
+
 **1.0.15**
 
 Added:
