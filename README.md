@@ -12,11 +12,16 @@ If this script helped you out, please feel free to support me by doing the any o
 
 ## Features
 
+**All of the below buttons copy their respective commands to your clipboard**
+
 - "Item SKU" button on item hover
 - "Add to pricelist" button on item hover
 - "Update pricelist" button on item hover
 - "Remove from pricelist" button on item hover
 - "Pricecheck item" button on item hover
+- "Match listing" button on item hover
+   - **Note: This requires you to regularly update the `KEY_PRICE` found at the top of the script to receive accurate prices for matching. This value should contain the current price of one key in refined.**
+   - **Please be sure to double-check item prices before sending the command to your bot! I will not be held responsible for incorrect item prices as a result of this command!**
 
 ## Installation
 
@@ -34,7 +39,7 @@ You can also install this script by manually pasting the code found in the above
 
 ## Example
 
-![Item Hover Buttons](https://i.imgur.com/NszrSKc.png)
+![Item Hover Buttons](https://i.imgur.com/lhlzfRy.png)
 
 _Newly added buttons for easily copying commands are highlighted above_
 
@@ -50,7 +55,7 @@ Fixed:
 
 Added:
 
-- Match command to match buy/sell order prices
+- Match listing command to match buy/sell order prices
   - **Note: This requires you to update the `KEY_PRICE` found at the top of the script to receive accurate prices. This value should contain the current price of one key in refined.**
 
 **1.0.12**
