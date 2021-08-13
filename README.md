@@ -12,6 +12,8 @@ If this script helped you out, please feel free to support me by doing the any o
 
 ## Features
 
+**All of the below buttons copy their respective commands to your clipboard**
+
 - "Item SKU" button on item hover
 - "Add to pricelist" button on item hover
 - "Update pricelist" button on item hover
