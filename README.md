@@ -21,6 +21,7 @@ If this script helped you out, please feel free to support me by doing the any o
 - "Pricecheck item" button on item hover
 - "Match listing" button on item hover
    - **Note: This requires you to regularly update the `KEY_PRICE` found at the top of the script to receive accurate prices for matching. This value should contain the current price of one key in refined.**
+   - **Please be sure to double-check item prices before sending the command to your bot! I will not be held responsible for incorrect item prices as a result of this command!**
 
 ## Installation
 
