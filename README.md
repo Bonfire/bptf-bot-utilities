@@ -43,6 +43,12 @@ _Newly added buttons for easily copying commands are highlighted above_
 
 ## Changelog
 
+**1.0.18**
+
+Fixed:
+
+- Issue with stale KeyData from previous versions
+
 **1.0.17**
 
 Updated:

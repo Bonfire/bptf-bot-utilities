@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Backpack.tf - Bot Utilities
 // @namespace    https://github.com/Bonfire
-// @version      1.0.17
+// @version      1.0.18
 // @description  A script to provide various TF2Autobot utilities on backpack.tf
 // @author       Bon
 // @downloadURL  https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js
@@ -17,13 +17,13 @@
 
 (async () => {
   let fetchedData = await GM_getValue("keyData");
-  let keyData = JSON.parse(fetchedData);
 
   // Fetch the price of a key in refined and store it
   // Only fetch this if the user has no keyData stored or it's been 30 minutes since the last fetch
-  if (keyData) {
-    let elapsedMillis = new Date() - keyData["timeStamp"];
+  if (fetchedData) {
+    let keyData = JSON.parse(fetchedData);
 
+    let elapsedMillis = new Date() - keyData["timeStamp"];
     if (elapsedMillis >= 1_800_000) {
       fetchKeyPrice();
     } else {
