@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Backpack.tf - Bot Utilities
 // @namespace    https://github.com/Bonfire
-// @version      1.0.16
+// @version      1.0.17
 // @description  A script to provide various TF2Autobot utilities on backpack.tf
 // @author       Bon
 // @downloadURL  https://github.com/Bonfire/bptf-bot-utilities/raw/master/bptf-bot-utilities.user.js
@@ -15,21 +15,32 @@
 // @run-at       document-end
 // ==/UserScript==
 
-(async function () {
-  ("use strict");
+(async () => {
+  let fetchedData = await GM_getValue("keyData");
+  let keyData = JSON.parse(fetchedData);
 
   // Fetch the price of a key in refined and store it
   // Only fetch this if the user has no keyData stored or it's been 30 minutes since the last fetch
-  if (
-    !GM_getValue("keyData") ||
-    new Date() - GM_getValue("keyData")["timeStamp"] > 30 * 60 * 1000
-  ) {
-    let KEY_PRICE = fetchKeyPrice();
+  if (keyData) {
+    let elapsedMillis = new Date() - keyData["timeStamp"];
+
+    if (elapsedMillis >= 1_800_000) {
+      fetchKeyPrice();
+    } else {
+      let KEY_PRICE = keyData["keyPrice"];
+      console.log(
+        "Key price fetched from storage. Current key price: " +
+          KEY_PRICE +
+          " ref"
+      );
+      console.log(
+        "Key price will next be fetched remotely in " +
+          ((1_800_000 - elapsedMillis) / 60_000).toFixed(2) +
+          " mins"
+      );
+    }
   } else {
-    let KEY_PRICE = GM_getValue("keyData")["keyPrice"];
-    console.log(
-      "Key price fetched from storage. Current key price: " + KEY_PRICE + " ref"
-    );
+    fetchKeyPrice();
   }
 
   // Stock item def index mappings
@@ -330,18 +341,18 @@
     }
     // Get the full item SKU, and be sure to remove any pesky whitespaces
     let itemSKU = `${itemDefIndex};\
-    ${itemQuality}\
-    ${itemEffectID ? `;u${itemEffectID}` : ""}\    
-    ${isAustralium ? ";australium" : ""}\
-    ${isUncraftable ? ";uncraftable" : ""}\
-    ${itemSkinInfo ? `;w${itemWear};pk${itemSkin}` : ""}\
-    ${isStrange ? ";strange" : ""}\
-    ${itemKillstreak ? `;kt-${itemKillstreak}` : ""}\
-    ${itemTarget ? `;td-${itemTarget}` : ""}\
-    ${isFestivized ? ";festive" : ""}\
-    ${crateSeries ? `;c${crateSeries}` : ""}\
-    ${itemOutput ? `;od-${itemOutput}` : ""}\
-    ${itemOutputQuality ? `;oq-${itemOutputQuality}` : ""}`;
+  ${itemQuality}\
+  ${itemEffectID ? `;u${itemEffectID}` : ""}\
+  ${isAustralium ? ";australium" : ""}\
+  ${isUncraftable ? ";uncraftable" : ""}\
+  ${itemSkinInfo ? `;w${itemWear};pk${itemSkin}` : ""}\
+  ${isStrange ? ";strange" : ""}\
+  ${itemKillstreak ? `;kt-${itemKillstreak}` : ""}\
+  ${itemTarget ? `;td-${itemTarget}` : ""}\
+  ${isFestivized ? ";festive" : ""}\
+  ${crateSeries ? `;c${crateSeries}` : ""}\
+  ${itemOutput ? `;od-${itemOutput}` : ""}\
+  ${itemOutputQuality ? `;oq-${itemOutputQuality}` : ""}`;
 
     return itemSKU.replace(/\s/g, "");
   }
@@ -383,25 +394,29 @@
     // Reach out to Prices.TF to grab the current key selling price
     GM_xmlhttpRequest({
       method: "GET",
-      url: "https://api.prices.tf/items/5021;6?src=bptf",
-      onload: function (response) {
+      url: "https://autobot.tf/json/items/5021;6",
+      onload: async function (response) {
         // Parse the sell price of the key in refined
         var keyResponse = JSON.parse(response.responseText);
 
         // Log to the user the current key price
         console.log(
-          "Fetched key price: " + keyResponse["sell"]["metal"] + " ref"
+          "Fetched key price from remote source: " +
+            keyResponse["sell"]["metal"] +
+            " ref"
         );
 
         // Set the KEY_PRICE
         KEY_PRICE = keyResponse["sell"]["metal"];
 
-        console.log("Set key price");
+        let keyData = {
+          keyPrice: KEY_PRICE,
+          timeStamp: new Date().getTime(),
+        };
 
         // Store the KEY_PRICE and the current timestamp
-        GM_setValue("keyData", { keyPrice: KEY_PRICE, timeStamp: new Date() });
-
-        console.log("Stored key price for 30 minutes");
+        await GM_setValue("keyData", JSON.stringify(keyData));
+        console.log("Stored key data for 30 minutes");
       },
     });
   }

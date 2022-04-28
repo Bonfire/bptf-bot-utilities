@@ -43,6 +43,17 @@ _Newly added buttons for easily copying commands are highlighted above_
 
 ## Changelog
 
+**1.0.17**
+
+Updated:
+
+- Automatic key price fetching to use the autobot.tf API instead of the now-obsolete prices.tf API
+- KeyData storage logging
+
+Fixed:
+
+- KeyData storage
+
 **1.0.16**
 
 Fixed:
